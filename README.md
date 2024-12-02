@@ -17,17 +17,34 @@ This project will be completed in phases. The first phase will be to work on thi
 
 ## Phase 0: Selection, Analysis & Plan
 
-#### Selected Project: CHOOSE WISELY
+#### Selected Project: BREAKOUT/ARKANOID
 
 ### Necessary Features
 What are the core features that your program should have? These should be things that __must__ be implemented in order to make the program useable/playable, not extra features that could be added to make the program more interesting/fun.
 
-YOUR ANSWERS HERE
+- Wall of Bricks (2D Array)
+    - breakable
+- Rectangular Paddle/Platform
+    - moveable left and right (using arrow keys)
+- Ball
+    - ball moves 
+    - ball bounces
+    - restricts ball from moving out of canvas boundaries 
+- Life Counter
+    - goes down when ball passes paddle (y coord of ball >= paddle)
+    - when reach zero, game ends 
+- A way to recover ball when it passes the paddle
+- A way to reset the game
+- Ability to play/pause game
+- After all bricks are broken:
+    - bricks will regenerate
+    - paddle becomes smaller
 
 ### Extra Features
 What are some features that are not essential to the program, but you would like to see (provided you have time after completing the necessary features. Theses can be customizations that are not part of the core requirements.
 
-YOUR ANSWERS HERE
+- Some bricks have special rewards for breaking them (randomized using a num generator -> sizes up ball | speeds up ball | +1 life | sizes up paddle)
+- 
 
 ### Array Usage
 How will you be using arrays in this project?
