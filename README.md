@@ -31,6 +31,7 @@ What are the core features that your program should have? These should be things
     - ball bounces
     - restricts ball from moving out of canvas boundaries 
 - Life Counter
+    - while life is not 0, keep playing the game
     - goes down when ball passes paddle *(y coord of ball >= paddle)*
     - when reach zero, game ends 
 - A way to recover ball when it passes the paddle
@@ -43,13 +44,33 @@ What are the core features that your program should have? These should be things
 ### Extra Features
 What are some features that are not essential to the program, but you would like to see (provided you have time after completing the necessary features. Theses can be customizations that are not part of the core requirements.
 
-- Some bricks have special rewards for breaking them (randomized using a num generator -> sizes up ball | speeds up ball | +1 life | sizes up paddle)
+- Some bricks have special rewards for breaking them (randomized using a num generator -> sizes up ball | speeds up ball | +1 life | sizes up paddle| more than 1 ball)
 
 ### Array Usage
 How will you be using arrays in this project?
 
 1D Array:
-- *N/a*
+
+1D Array:
+
+    N/A
+
+2D Array:
+
+    sets the grid of bricks
+
+Controls
+
+How will your program be controlled? List all keyboard commands and mouse interactions.
+
+Keyboard Commands:
+
+    LEFT = moves paddle left
+    RIGHT = moves paddle right
+    r = resets the game
+    SPACE = play/pauses the game
+
+- special feature: generates more than one ball when a certain  brick is hit
 
 2D Array:
 - sets the grid of bricks 
