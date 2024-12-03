@@ -27,7 +27,7 @@ What are the core features that your program should have? These should be things
 - Rectangular Paddle/Platform
     - moveable left and right *(using arrow keys)*
 - Ball
-    - ball moves 
+    - ball moves *(has a x-pos, y-pos, hori-movement, and vert movement)*
     - ball bounces
     - restricts ball from moving out of canvas boundaries 
 - Life Counter
@@ -49,7 +49,7 @@ What are some features that are not essential to the program, but you would like
 How will you be using arrays in this project?
 
 1D Array:
-- N/A
+- *N/a*
 
 2D Array:
 - sets the grid of bricks 
