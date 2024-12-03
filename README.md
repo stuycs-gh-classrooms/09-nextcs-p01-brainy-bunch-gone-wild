@@ -53,7 +53,7 @@ How will you be using arrays in this project?
 
 1D Array:
 
-    N/A
+    SPECIAL FEATURE: more than 1 ball projectile
 
 2D Array:
 
