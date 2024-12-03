@@ -49,7 +49,7 @@ What are some features that are not essential to the program, but you would like
 How will you be using arrays in this project?
 
 1D Array:
-- sets each individual brick
+- N/A
 
 2D Array:
 - sets the grid of bricks 
