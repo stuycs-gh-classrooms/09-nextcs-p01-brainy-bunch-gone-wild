@@ -22,16 +22,16 @@ This project will be completed in phases. The first phase will be to work on thi
 ### Necessary Features
 What are the core features that your program should have? These should be things that __must__ be implemented in order to make the program useable/playable, not extra features that could be added to make the program more interesting/fun.
 
-- Wall of Bricks (2D Array)
+- Wall of Bricks *(2D Array)*
     - breakable
 - Rectangular Paddle/Platform
-    - moveable left and right (using arrow keys)
+    - moveable left and right *(using arrow keys)*
 - Ball
     - ball moves 
     - ball bounces
     - restricts ball from moving out of canvas boundaries 
 - Life Counter
-    - goes down when ball passes paddle (y coord of ball >= paddle)
+    - goes down when ball passes paddle *(y coord of ball >= paddle)*
     - when reach zero, game ends 
 - A way to recover ball when it passes the paddle
 - A way to reset the game
@@ -44,40 +44,51 @@ What are the core features that your program should have? These should be things
 What are some features that are not essential to the program, but you would like to see (provided you have time after completing the necessary features. Theses can be customizations that are not part of the core requirements.
 
 - Some bricks have special rewards for breaking them (randomized using a num generator -> sizes up ball | speeds up ball | +1 life | sizes up paddle)
-- 
 
 ### Array Usage
 How will you be using arrays in this project?
 
 1D Array:
-- YOUR ANSER HERE
+- sets each individual brick
 
 2D Array:
-- YOUR ANSWER HERE
+- sets the grid of bricks 
 
 
 ### Controls
 How will your program be controlled? List all keyboard commands and mouse interactions.
 
 Keyboard Commands:
-- LIST OF COMMANDS HERE
+- LEFT = moves paddle left
+- RIGHT = moves paddle right
+- r = resets the game
+- SPACE = play/pauses the game
 
-Mouse Control:
-- Mouse movement:
-- Mouse pressed:
+Mouse Control: 
+- Mouse movement: *N/a*
+- Mouse pressed: *N/a*
 
 
 ### Classes
 What classes will you be creating for this project? Include the instance variables and methods that you believe you will need. You will be required to create at least 2 different classes. If you are going to use classes similar to those we've made for previous assignments, you will have to add new features to them.
 
-CLASS NAME0
+CLASS BRICK
 - Instance variables:
-  - LIST INSTANCE VARS HERE
+  - x-coord
+  - y-coord
+  - size
+  - color
+  - broken *(boolean)*
 - METHODS
-  - LIST METHODS HERE
+  - display
+  - processes ball collison
 
-CLASS NAME1
+CLASS BRICKGRID
 - Instance variables:
-  - LIST INSTANCE VARS HERE
+  - rows of bricks
+  - columns of bricks
+  - coords of brick grid
 - METHODS
-  - LIST METHODS HERE
+  - display grid
+  - processes ball collision
+  - processes when all bricks disappear and generates new bricks
