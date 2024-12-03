@@ -76,6 +76,7 @@ CLASS BRICK
 - Instance variables:
   - x-coord
   - y-coord
+  - horizontal & vertical speed
   - size
   - color
   - broken *(boolean)*
