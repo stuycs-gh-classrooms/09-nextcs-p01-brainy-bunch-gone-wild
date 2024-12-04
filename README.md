@@ -87,7 +87,7 @@ Keyboard Commands:
 
 Mouse Control: 
 - Mouse movement: *N/a*
-- Mouse pressed: *N/a*
+- Mouse pressed: changes brick color, and can break bricks if pressed enough
 
 
 ### Classes
@@ -97,20 +97,18 @@ CLASS BRICK
 - Instance variables:
   - x-coord
   - y-coord
-  - horizontal & vertical speed
   - size
   - color
   - broken *(boolean)*
 - METHODS
   - display
   - processes ball collison
-
-CLASS BRICKGRID
+ 
+CLASS BALL
 - Instance variables:
-  - rows of bricks
-  - columns of bricks
-  - coords of brick grid
-- METHODS
-  - display grid
-  - processes ball collision
-  - processes when all bricks disappear and generates new bricks
+  - x-coord
+  - y-coord
+  - size
+  - color
+  - horizontal speed
+  - vertical speed
