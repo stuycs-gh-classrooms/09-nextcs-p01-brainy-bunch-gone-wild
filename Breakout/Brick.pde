@@ -54,7 +54,7 @@ class Brick {
 
     if (mousePressed && inRange) {
       return true; //if the mouse is clicking that certain brick return true
-    }
+    } //there will be a function in the main program where it checks how many times this function returns true so that when the brick is clicked a certain amount of times it will break
     return false;
   }
 
