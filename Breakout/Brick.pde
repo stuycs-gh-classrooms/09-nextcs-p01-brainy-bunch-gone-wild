@@ -9,42 +9,48 @@ class Brick {
     bxy = xy;
     bsize = size;
     broken = false;
+    colorDecider();
   }
 
   void colorDecider() {
-    bcc = int(random(5)); //randomizes brick colors
+    bcc = int(random(6));
     if (bcc == 0) {
       bc = color(255, 100, 100);
-    }//red
-    else if (bcc == 1) {
+    } else if (bcc == 1) {
       bc = color(255, 255, 100);
-    }//yellow
-    else if (bcc == 2) {
+    } else if (bcc == 2) {
       bc = color(100, 255, 100);
-    }//green
-    else if (bcc == 3) {
+    } else if (bcc == 3) {
       bc = color(100, 100, 255);
-    }//blue
-    else if (bcc == 4) {
+    } else if (bcc == 4) {
       bc = color(255, 100, 255);
-    }//purple
-    else if (bcc == 5) {
+    } else if (bcc == 5) {
       bc = color(255, 229, 204);
-    }//broken|background
-  }
-
-  void display() {
-    if(!broken){
-      fill(bc);
-      rect(bxy.x- (bsize/2), bxy.y - (bsize/2), bsize, bsize);
     }
   }
 
-  boolean collisionCheck(Ball other)
-  {
-    return (this.bxy.dist(other.bxy)
-      <= (this.bsize/2 + other.bsize/2) );
-  }//collisionCheck()
+  void display() {
+    if (!broken) {
+      fill(bc);
+      rect(bxy.x - (bsize / 2), bxy.y - (bsize / 2), bsize, bsize);
+    }
+  }
+
+  void makeGrid(Brick[][] b) {
+    for (int i = 0; i < b.length; i++) {
+      for (int j = 0; j < b[i].length; j++) {
+        float startX = (width - b[0].length * bsize) / 2;
+        b[i][j] = new Brick(new PVector(startX + j * bsize + (bsize * 2 / 5), bsize / 2 + i * bsize), bsize);
+        b[i][j].display();
+      }
+    }
+  }
+
+  //boolean collisionCheck(Ball other)
+  //{
+  //  return (this.bxy.dist(other.bxy)
+  //    <= (this.bsize/2 + other.bsize/2) );
+  //}//collisionCheck()
 
   boolean mouseBreak(float mx, float my) { //get mouse coordinates
     boolean inRange = false;
@@ -57,5 +63,4 @@ class Brick {
     } //there will be a function in the main program where it checks how many times this function returns true so that when the brick is clicked a certain amount of times it will break
     return false;
   }
-
 }
