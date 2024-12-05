@@ -70,8 +70,6 @@ Keyboard Commands:
     r = resets the game
     SPACE = play/pauses the game
 
-- special feature: generates more than one ball when a certain  brick is hit
-
 2D Array:
 - sets the grid of bricks 
 
