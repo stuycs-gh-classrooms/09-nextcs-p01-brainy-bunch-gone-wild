@@ -6,25 +6,39 @@ color c;
 int pad_size;
 int level;
 boolean play;
+int time;
 
 void setup() {
   background(225, 229, 204);
   level = 1;
   pad_size = 60;
-
+  frameRate(30);
+  time = 0;
+  
   size(500, 500);
   brickwall = new Brick[5][8];
   pad = new Paddle(pad_size);
   newProjectile(20);
+  strokeWeight(2);
   makeGrid(brickwall);
 }
 
 void draw() {
   background(225, 229, 204);
+  strokeWeight(2);
   drawGrid(brickwall);
   pad.display();
   projectile.display();
   keyReleased();
+  
+  time +=1;
+  
+  if (time <= 300) {
+  textAlign(CENTER,CENTER);
+  fill(0);
+  textSize(30);
+  text("UP Arrow To Start Game", width/2, height-15); //text appears for some time and then disappears
+  }
   //more functions here
 }
 
