@@ -34,8 +34,10 @@ class Brick {
   }
 
   void display() {
-    fill(bc);
-    rect(bxy.x- (bsize/2), bxy.y - (bsize/2), bsize, bsize);
+    if(!broken){
+      fill(bc);
+      rect(bxy.x- (bsize/2), bxy.y - (bsize/2), bsize, bsize);
+    }
   }
 
   boolean collisionCheck(Ball other)
