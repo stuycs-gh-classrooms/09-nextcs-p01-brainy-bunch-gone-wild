@@ -10,6 +10,7 @@ class Paddle {
   
   void display() {
     fill(255,153,51);
+    noStroke();
     rect(x_coord - size, 440, size*2, 10);
   }
 }
