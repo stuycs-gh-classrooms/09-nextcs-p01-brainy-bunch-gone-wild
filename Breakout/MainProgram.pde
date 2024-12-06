@@ -31,6 +31,8 @@ void draw() {
   pad.display();
   projectile.display();
   keyReleased();
+  checkCollisions(projectile, brickwall);
+  paddleBounce(pad, projectile);
   textSize(25);
   fill(0, 0, 255);
   textAlign(RIGHT, BOTTOM);
@@ -72,16 +74,34 @@ void drawGrid(Brick[][] b) {
     }
   }
 }
-/*
+
 void checkCollisions(Ball p, Brick[][] b) { //needs the Ball class
- for (int i = 0; i < b.length; i++) {
- for (int j = 0; j < b[i].length; j++) {
- if (b[i][j].collisionCheck(p)) {
- b[i][j] = null; //remove the brick once it is hit
- }
- }
- }
- }*/
+  for (int i = 0; i < b.length; i++) {
+    for (int j = 0; j < b[i].length; j++) {
+      if (b[i][j].collisionCheck(projectile)) {
+        b[i][j].broken = true;
+        p.yspeed = p.yspeed * -1;
+        if (p.xspeed == -1) {
+          p.xspeed = 1;
+        } else {
+          p.xspeed = -1;
+        }
+      }
+    }
+  }
+}
+
+void paddleBounce (Paddle p, Ball b) {
+  if (p.collisionCheck(b)) {
+    b.yspeed = b.yspeed * -1;
+    if (b.cxy.x>=(p.x_coord-p.size) || b.cxy.x<(p.x_coord)) {
+      b.xspeed = -1;
+    } 
+    else if (b.cxy.x>=(p.x_coord) || b.cxy.x<(p.x_coord+p.size)){
+      b.xspeed = 1;
+    }
+  }
+}
 
 void newProjectile(int psize) {
   PVector new_coord = new PVector(width / 2, 440 - psize / 2);
