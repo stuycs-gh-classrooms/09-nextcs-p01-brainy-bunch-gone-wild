@@ -9,7 +9,7 @@ class Paddle {
   }
 
   boolean collisionCheck(Ball other){
-    if (other.cxy.y + other.csize >= this.y_coord && (other.cxy.x >= this.x_coord - size || other.cxy.x <= this.x_coord + size*2)){
+    if (other.cxy.y + other.csize >= this.y_coord && (other.cxy.x >= this.x_coord - size && other.cxy.x <= this.x_coord + size*2)){
       return true;
     }
     return false;
