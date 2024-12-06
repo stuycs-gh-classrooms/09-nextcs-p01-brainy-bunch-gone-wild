@@ -19,13 +19,29 @@ class Ball{
    }
    
     void setSpeed(int newx, int newy) {
-    xspeed = newx;
-    yspeed = newy;
+     xspeed = newx;
+     yspeed = newy;
    }
    
-   void move(){
-     cxy.x+= xspeed;
-     cxy.y+= yspeed;
+   void move() {
+    cxy.x+= xspeed;
+    cxy.y+= yspeed;
+    if (cxy.y >= height){
+      yspeed = yspeed*-1;
+    }
+    else if (cxy.y<=0){
+      yspeed = yspeed*-1;
+    }
+  
+    if (cxy.x>=width){
+      xspeed = xspeed*-1;
+    }
+    else if(cxy.x<=0){
+      xspeed = xspeed*-1;
+    }
+  }
+
+     
    }
 }
 
