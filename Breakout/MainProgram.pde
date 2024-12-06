@@ -83,7 +83,8 @@ void checkCollisions(Ball p, Brick[][] b) { //needs the Ball class
         p.yspeed = p.yspeed * -1;
         if (p.xspeed == -1) {
           p.xspeed = 1;
-        } else {
+        } 
+        else if(p.xspeed == 1) {
           p.xspeed = -1;
         }
       }
