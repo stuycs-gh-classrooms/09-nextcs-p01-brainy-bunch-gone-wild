@@ -46,13 +46,14 @@ class Brick {
     }
   }
 
-//CHANGE THIS FUNCTION TO YOUR VERSION I DIDN'T UPDATE IT
-  //boolean collisionCheck(Ball other)
-  //{
-  //  return (this.bxy.dist(other.bxy)
-  //    <= (this.csize/2 + other.csize/2) );
-  //    return false;
-  //}//collisionCheck()
+boolean collisionCheck(Ball other){
+  if (dist(other.cxy.x, other.cxy.y, this.bxy.x, this.bxy.y) <= 0){
+    return true;
+  }
+  else{
+    return false;
+  }
+}//collisionCheck()
 
   boolean mouseBreak(float mx, float my) { //get mouse coordinates
     boolean inRange = false;
