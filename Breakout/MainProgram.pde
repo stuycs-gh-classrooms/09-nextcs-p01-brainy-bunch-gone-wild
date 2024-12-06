@@ -9,12 +9,11 @@ boolean play;
 int time;
 
 void setup() {
-  background(225, 229, 204);
+  background(255, 229, 204);
   level = 1;
   pad_size = 60;
-  frameRate(30);
   time = 0;
-  
+
   size(500, 500);
   brickwall = new Brick[5][8];
   pad = new Paddle(pad_size);
@@ -30,14 +29,18 @@ void draw() {
   pad.display();
   projectile.display();
   keyReleased();
-  
+
+  if (play) {
+    projectile.move();
+  }//when UP is pressed, games starts and begins moving projectile
+
   time +=1;
-  
-  if (time <= 300) {
-  textAlign(CENTER,CENTER);
-  fill(0);
-  textSize(30);
-  text("UP Arrow To Start Game", width/2, height-15); //text appears for some time and then disappears
+
+  if (time <= 200) {
+    textAlign(CENTER, CENTER);
+    fill(0);
+    textSize(30);
+    text("UP Arrow To Start Game", width/2, height-15); //text appears for some time and then disappears
   }
   //more functions here
 }
@@ -81,7 +84,6 @@ void newProjectile(int psize) {
 void keyPressed() {
   if (keyCode == UP) { //used to start the game
     play = true;
-    projectile.yspeed=-1;
   }
 
   if (play) {
@@ -94,7 +96,7 @@ void keyPressed() {
       pad.x_coord+=5;
       println("RIGHT");
     } else if (key == 'r') {
-      background(225,229,204);
+      background(225, 229, 204);
       level = 1;
       pad_size = 60;
       brickwall = new Brick[5][8];
@@ -105,8 +107,8 @@ void keyPressed() {
   }
 }
 
-  void keyReleased() {
-    if (keyCode == LEFT || keyCode == RIGHT) { //stop the paddle from moving if the left/right keys are not pressed
-      pad.x_coord += 0;
-    }
+void keyReleased() {
+  if (keyCode == LEFT || keyCode == RIGHT) { //stop the paddle from moving if the left/right keys are not pressed
+    pad.x_coord += 0;
   }
+}
