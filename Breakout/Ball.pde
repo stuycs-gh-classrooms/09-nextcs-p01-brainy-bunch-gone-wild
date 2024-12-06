@@ -1,14 +1,16 @@
-class ball{
+class Ball{
   PVector cxy;
   int xspeed;
   int yspeed;
   int csize;
   color cc;
   
-   ball(PVector p, int s) {
+   Ball(PVector p, int s) {
      csize = s;
      cxy = new PVector(p.x, p.y);
      cc = color(10,50,255);
+     xspeed = 0;
+     yspeed = -1;
    }
    
    void display(){
