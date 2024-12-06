@@ -50,9 +50,7 @@ boolean collisionCheck(Ball other){
   if (dist(other.cxy.x, other.cxy.y, this.bxy.x, this.bxy.y) <= 0){
     return true;
   }
-  else{
-    return false;
-  }
+  return false;
 }//collisionCheck()
 
   boolean mouseBreak(float mx, float my) { //get mouse coordinates
