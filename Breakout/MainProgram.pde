@@ -7,12 +7,14 @@ int pad_size;
 int level;
 boolean play;
 int time;
+int life;
 
 void setup() {
   background(255, 229, 204);
   level = 1;
   pad_size = 60;
   time = 0;
+  life = 5;
 
   size(500, 500);
   brickwall = new Brick[5][8];
@@ -29,6 +31,10 @@ void draw() {
   pad.display();
   projectile.display();
   keyReleased();
+  textSize(25);
+  fill(0, 0, 255);
+  textAlign(RIGHT, BOTTOM);
+  text("Life: " + life, 490, 490);
 
   if (play) {
     projectile.move();
@@ -51,6 +57,7 @@ void makeGrid(Brick[][] b) {
       c = color((int(random(255))), (int(random(255))), (int(random(255))));
       float startX = (width - b[0].length * bsize) / 2; //used to center the brickwall
       b[i][j] = new Brick(new PVector(startX + j * bsize+(bsize*2/5), bsize/2+i*bsize), bsize); //order the bricks in the grid
+      //b[i][j].generateEffects(projectile,pad);
       b[i][j].display();
     }
   }
@@ -86,24 +93,52 @@ void keyPressed() {
     play = true;
   }
 
+  if (key == ' ') {
+    play = !play;
+  }
+
   if (play) {
-    if (key == ' ') {
-      play = !play;
-    } else if (keyCode == LEFT && (pad.x_coord - pad.size / 2)-30 > 0) { //stop the paddle from moving out of the window
+    if (keyCode == LEFT && (pad.x_coord - pad.size / 2)-30 > 0) { //stop the paddle from moving out of the window
       pad.x_coord-=5;
       println("LEFT");
     } else if (keyCode == RIGHT && pad.x_coord + pad.size < width) {
       pad.x_coord+=5;
       println("RIGHT");
     } else if (key == 'r') {
-      background(225, 229, 204);
-      level = 1;
-      pad_size = 60;
-      brickwall = new Brick[5][8];
-      pad = new Paddle(pad_size);
-      newProjectile(20);
-      makeGrid(brickwall);
+      gameReset();
     }
+  }
+}
+
+void keyReleased() {
+  if (keyCode == LEFT || keyCode == RIGHT) { //stop the paddle from moving if the left/right keys are not pressed
+    pad.x_coord += 0;
+  }
+}
+
+void roundReset() {
+  newProjectile(20);
+  pad = new Paddle(pad_size);
+}
+
+void gameReset() {
+  background(225, 229, 204);
+  level = 1;
+  pad_size = 60;
+  brickwall = new Brick[5][8];
+  pad = new Paddle(pad_size);
+  newProjectile(20);
+  makeGrid(brickwall);
+}
+
+void checkBound() {
+  if (projectile.cxy.y > pad.y_coord) { //if the ball did not get caught by the paddle, reset the round (not the entire game)
+    roundReset();
+    life -=1;
+  }
+  
+  if (life <= 0) {
+    gameReset();
   }
 }
 
