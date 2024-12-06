@@ -9,10 +9,10 @@ class Paddle {
   }
 
   boolean collisionCheck(Ball other){
-  if (dist(other.cxy.x, other.cxy.y, this.x_coord, this.y_coord) <= 0){
-    return true;
-  }
-  return false;
+    if (other.cxy.y >= this.y_coord){
+      return true;
+    }
+    return false;
 
   void display() {
     fill(255,153,51);
