@@ -12,9 +12,7 @@ class Paddle {
   if (dist(other.cxy.x, other.cxy.y, this.x_coord, this.y_coord) <= 0){
     return true;
   }
-  else{
-    return false;
-  }
+  return false;
 
   void display() {
     fill(255,153,51);
