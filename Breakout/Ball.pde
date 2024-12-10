@@ -26,11 +26,13 @@ class Ball{
    void move() {
     cxy.x+= xspeed;
     cxy.y+= yspeed;
+    
     if (cxy.y >= height){
-      yspeed = yspeed*-1;
+      yspeed = yspeed* (-1);
     }
-    else if (cxy.y<=0){
-      yspeed = yspeed*-1;
+    
+    if (cxy.y <= 0){
+      yspeed = yspeed* (-1);
     }
   
     if (cxy.x>=width){
