@@ -40,9 +40,6 @@ class Ball{
       xspeed = xspeed*-1;
     }
   }
-
-     
-   }
 }
 
      
