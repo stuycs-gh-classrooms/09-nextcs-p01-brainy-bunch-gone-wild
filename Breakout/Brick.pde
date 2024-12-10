@@ -47,7 +47,7 @@ class Brick {
   }
 
 boolean collisionCheck(Ball other){
-  if (dist(other.cxy.x, other.cxy.y, this.bxy.x, this.bxy.y) <= 0){
+  if (dist(other.cxy.x, other.cxy.y, this.bxy.x, this.bxy.y) <= bsize){
     return true;
   }
   return false;
