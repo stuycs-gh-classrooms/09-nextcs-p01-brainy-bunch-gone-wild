@@ -15,7 +15,9 @@ void setup() {
   pad_size = 60;
   time = 0;
   life = 5;
-
+  
+  frameRate(240);
+  
   size(500, 500);
   brickwall = new Brick[5][8];
   pad = new Paddle(pad_size);
@@ -78,7 +80,7 @@ void drawGrid(Brick[][] b) {
 void checkCollisions(Ball p, Brick[][] b) { //needs the Ball class
   for (int i = 0; i < b.length; i++) {
     for (int j = 0; j < b[i].length; j++) {
-      if (b[i][j].collisionCheck(projectile)) {
+      if (b[i][j].collisionCheck(projectile) && !b[i][j].broken) {
         b[i][j].broken = true;
         p.yspeed = p.yspeed * -1;
         if (p.xspeed == -1) {
@@ -160,11 +162,5 @@ void checkBound() {
   
   if (life <= 0) {
     gameReset();
-  }
-}
-
-void keyReleased() {
-  if (keyCode == LEFT || keyCode == RIGHT) { //stop the paddle from moving if the left/right keys are not pressed
-    pad.x_coord += 0;
   }
 }
