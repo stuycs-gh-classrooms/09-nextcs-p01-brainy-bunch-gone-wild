@@ -4,12 +4,15 @@ class Brick {
   int bcc;
   color bc;
   boolean broken;
+  String eMessage;
+  boolean active;
 
   Brick(PVector xy, int size) {
     bxy = xy;
     bsize = size;
     broken = false;
     colorDecider();
+    active = false;
   }
 
   void colorDecider() {
@@ -65,27 +68,42 @@ boolean collisionCheck(Ball other){
     return false;
   }
 
-  //void generateEffects(Ball other, Paddle p) {
-  //  int n = int(random(0, 21));
-  //  if (collisionCheck(other)) { //should work when collisionCheck() can be used
-  //    if (n == 0) {
-  //      other.csize*=2;
-  //    } else if (n == 2) {
-  //      life += 1;
-  //    } else if (n == 3) {
-  //      p.size += 10;
-  //    } else if (n == 4) {
-  //      other.xspeed*=1.5;
-  //      other.yspeed*=1.5;
-  //    } else if (n == 5) {
-  //      Ball[] group = new Ball[2];
-  //      for (int i = 0; i<group.length; i++) {
-  //        group[i] = new Ball(new PVector(p.x_coord+((p.size/2)*(i+1)), p.y_coord-other.csize/2), other.csize); //the new balls will be placed evenly spaced on the paddle once created
-  //        group[i].display();
-  //        //!!!ADD THINGS HERE:
-  //        //their speeds should set so that they will go off in different directions as soon as they are created
-  //      }
-  //    }
-  //  }
-  //}
+
+void generateEffects(Ball other, Paddle p, int n) {
+  if (collisionCheck(other) && active == false) {
+    active = true;
+    if (n == 0) {
+      other.csize *= 2;
+      textSize(20);
+      fill(255, 0, 0);
+      println("Ball Size Increased!");
+    } else if (n == 2) {
+      life += 1;
+      textSize(20);
+      fill(0, 255, 0);
+      println("Life +1");
+    } else if (n == 3) {
+      p.size += 10;
+      textSize(20);
+      fill(0, 0, 255);
+      println("Paddle Size Increased!");
+    } else if (n == 4) {
+      other.xspeed *= 1.5;
+      other.yspeed *= 1.5;
+      textSize(20);
+      fill(255, 255, 0);
+      println("Faster Ball...");
+    } else if (n == 5) {
+      Ball[] group = new Ball[2];
+      for (int i = 0; i < group.length; i++) {
+        group[i] = new Ball(new PVector(p.x_coord + ((p.size / 2) * (i + 1)), p.y_coord - other.csize / 2), other.csize);
+        group[i].setSpeed(int(random(2, 5)), int(random(-5, -3)));
+        group[i].display();
+      }
+      textSize(20);
+      fill(255, 165, 0);
+      println("More Balls!");
+    }
+  }
+}
 }
