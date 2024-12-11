@@ -33,6 +33,7 @@ void draw() {
   strokeWeight(2);
   drawGrid(brickwall);
   pad.display();
+  pad.move();
   projectile.display();
   keyReleased();
   checkCollisions(projectile, brickwall);
@@ -110,10 +111,13 @@ void checkCollisions(Ball p, Brick[][] b) { //needs the Ball class
 void paddleBounce (Paddle p, Ball b) {
   if (p.collisionCheck(b)) {
     b.yspeed = b.yspeed * -1;
-    if (b.cxy.x>=(p.x_coord-p.size) || b.cxy.x<(p.x_coord)) {
-      b.xspeed = -1;
-    } else if (b.cxy.x>=(p.x_coord) || b.cxy.x<(p.x_coord+p.size)) {
-      b.xspeed = 1;
+    if (b.xspeed == 0){
+      if(b.cxy.x < p.x_coord){
+        b.xspeed = -1;
+      }
+      else if (b.cxy.x >= p.x_coord){
+        b.xspeed = 1;
+      }
     }
   }
 }
@@ -130,16 +134,6 @@ void keyPressed() {
 
   if (key == ' ') {
     play = !play;
-  }
-
-  if (play) {
-    if (keyCode == LEFT && (pad.x_coord - pad.size / 2)-30 > 0) { //stop the paddle from moving out of the window
-      pad.x_coord-=5;
-    } else if (keyCode == RIGHT && pad.x_coord + pad.size < width) {
-      pad.x_coord+=5;
-    } else if (key == 'r') {
-      gameReset();
-    }
   }
 }
 
