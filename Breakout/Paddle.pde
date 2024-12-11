@@ -4,13 +4,19 @@ class Paddle {
   
   Paddle(int s) {
     this.size = s;
-    this.x_coord = width/2;
+    this.x_coord = mouseX;
     this.y_coord = 450;
   }
 
+  void move (){
+    x_coord = mouseX;
+  }
+  
   boolean collisionCheck(Ball other){
-    if (other.cxy.y + other.csize >= this.y_coord && (other.cxy.x >= this.x_coord - size && other.cxy.x <= this.x_coord + size*2)){
-      return true;
+    if (other.cxy.y + other.csize >= this.y_coord){
+      if((other.cxy.x >= this.x_coord - size) && (other.cxy.x <= this.x_coord + size)){
+          return true;
+      }
     }
     return false;
   }
